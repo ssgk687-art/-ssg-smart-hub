@@ -1,0 +1,247 @@
+{
+  "results": [
+    {
+      "test": "Page loads and title",
+      "result": "PASS",
+      "detail": "SSG SMART HUB \u2014 Smart Tools. Smarter You!"
+    },
+    {
+      "test": "All 8 categories and views present",
+      "result": "PASS",
+      "detail": "home=8, directory=8, views=8"
+    },
+    {
+      "test": "App JS initialized",
+      "result": "PASS",
+      "detail": "year populated"
+    },
+    {
+      "test": "All Tools navigation",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Tool directory opens text tool",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Category search filters",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Urdu RTL translation",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Urdu tool title translation",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Urdu text statistics translation",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Hindi LTR translation",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Hindi text statistics translation",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "English translation restored",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Text statistics",
+      "result": "PASS",
+      "detail": "Words: 5 \u00b7 Characters: 25 \u00b7 Sentences: 2 \u00b7 Reading time: 1 min"
+    },
+    {
+      "test": "Text uppercase",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Text clean spaces",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Text download",
+      "result": "PASS",
+      "detail": "ssg-text.txt"
+    },
+    {
+      "test": "Image preview appears",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Image resize output dimensions",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Image export download",
+      "result": "PASS",
+      "detail": "test-image-resize.png"
+    },
+    {
+      "test": "JPEG conversion output",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Image compression with width limit",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Valid image crop",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Invalid crop rejected",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Background editor panel opens",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Background erase, undo and redo",
+      "result": "PASS",
+      "detail": "erased=0, undo=255, redo=0"
+    },
+    {
+      "test": "Transparent PNG export",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Background JPG export",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "HEX to RGB/HSL conversion",
+      "result": "PASS",
+      "detail": "HEX: #FF0000\nRGB: 255, 0, 0\nHSL: 0\u00b0, 100%, 50%"
+    },
+    {
+      "test": "Caption generator",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Hashtag generator",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Unit conversion",
+      "result": "PASS",
+      "detail": "1 KM = 0.621371 MI"
+    },
+    {
+      "test": "Incompatible units rejected",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Empty unit value rejected",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Date difference",
+      "result": "PASS",
+      "detail": "Difference: 30 day(s)."
+    },
+    {
+      "test": "Missing date rejected",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Add days calculator",
+      "result": "PASS",
+      "detail": "2026-03-02"
+    },
+    {
+      "test": "Duplicate line removal",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Invalid PDF header rejected",
+      "result": "PASS",
+      "detail": "The selected file does not have a valid PDF header."
+    },
+    {
+      "test": "PDF missing CDN library fails gracefully",
+      "result": "PASS",
+      "detail": "PDF library did not load. Check your internet connection and reload the page."
+    },
+    {
+      "test": "QR oversized content rejected",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "QR missing CDN library fails gracefully",
+      "result": "PASS",
+      "detail": "QR library did not load. Check your internet connection."
+    },
+    {
+      "test": "Mobile menu button visible at phone width",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Mobile category grid uses two columns",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Mobile menu toggles aria-expanded",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Privacy page navigation",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Manifest JSON parses",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Service worker script syntax",
+      "result": "PASS",
+      "detail": "source file present"
+    },
+    {
+      "test": "No uncaught browser exceptions",
+      "result": "PASS",
+      "detail": ""
+    }
+  ],
+  "console_errors": [],
+  "page_errors": [],
+  "failed_requests": []
+}
