@@ -21,7 +21,7 @@ const readImage = (file) => new Promise((resolve,reject)=>{
   if(!file || !/^image\/(jpeg|png|webp)$/.test(file.type)) return reject(new Error('Please choose a JPG, PNG or WebP image.'));
   if(file.size>25*1024*1024) return reject(new Error('Image is larger than the 25 MB limit.'));
   const url=URL.createObjectURL(file), img=new Image();
-  img.onload=()=>{ URL.revokeObjectURL(url); if(img.naturalWidth>6000||img.naturalHeight>6000||img.naturalWidth*img.naturalHeight>24000000){reject(new Error('Image dimensions exceed the safe 6000 px / 36 MP processing limit.'));return;} resolve(img); };
+  img.onload=()=>{ URL.revokeObjectURL(url); if(img.naturalWidth>6000||img.naturalHeight>6000||img.naturalWidth*img.naturalHeight>24000000){reject(new Error('Image dimensions exceed the safe 6000 px / 24 MP processing limit.'));return;} resolve(img); };
   img.onerror=()=>{ URL.revokeObjectURL(url); reject(new Error('The image could not be opened.')); };
   img.src=url;
 });
