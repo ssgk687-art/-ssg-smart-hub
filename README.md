@@ -27,6 +27,10 @@
 - The service worker caches only the same-origin app shell. PDF and QR libraries are not cached for offline use.
 - No third-party analytics or AdSense is active in this build.
 
+## Final source correction (27 November 2026)
+- Corrected the image-dimension rejection message in `assets/app.js`: the enforced pixel-area ceiling is 24 megapixels, and the error message now also says 24 MP (not 36 MP).
+- Kept the 24 MP guard, 6,000 px per-side guard, and 25 MB input-file limit unchanged.
+
 ## Deploy
 Publish the complete folder structure at the repository root using Cloudflare Pages. Do not upload only `index.html`; the referenced assets, manifest, icons, service worker and `_headers` are part of this build.
 
