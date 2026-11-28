@@ -1,9 +1,14 @@
 
 'use strict';
 
-// Increment this value whenever the app shell changes.
-const CACHE_NAME = 'ssg-smart-hub-shell-v2';
+/*
+ * SSG SMART HUB
+ * Production Service Worker
+ * Cache version: v3
+ */
+
 const CACHE_PREFIX = 'ssg-smart-hub-';
+const CACHE_NAME = `${CACHE_PREFIX}shell-v3`;
 
 const APP_SHELL = [
   '/',
@@ -14,6 +19,7 @@ const APP_SHELL = [
   '/icons/icon-512.png'
 ];
 
+// Install: cache the essential application files.
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -22,6 +28,7 @@ self.addEventListener('install', event => {
   );
 });
 
+// Activate: remove only outdated SSG SMART HUB caches.
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys()
@@ -37,44 +44,76 @@ self.addEventListener('activate', event => {
   );
 });
 
+// Fetch: network-first for pages, cache-first for app resources.
 self.addEventListener('fetch', event => {
   const request = event.request;
 
   if (request.method !== 'GET') return;
 
   const url = new URL(request.url);
+
+  // Never intercept requests to other origins.
   if (url.origin !== self.location.origin) return;
 
+  // Navigation requests: prefer the latest online page.
   if (request.mode === 'navigate') {
-    event.respondWith(
-      fetch(request).then(response => {
-        if (response.ok) {
-          const copy = response.clone();
-          event.waitUntil(
-            caches.open(CACHE_NAME)
-              .then(cache => cache.put('/index.html', copy))
-          );
+    event.respondWith((async () => {
+      try {
+        const response = await fetch(request);
+
+        if (response.ok && response.type === 'basic') {
+          const cache = await caches.open(CACHE_NAME);
+          await cache.put('/index.html', response.clone());
         }
+
         return response;
-      }).catch(() => caches.match('/index.html'))
-    );
+      } catch (error) {
+        const cachedPage = await caches.match('/index.html');
+
+        if (cachedPage) return cachedPage;
+
+        return new Response(
+          'SSG SMART HUB is currently offline. Please reconnect and try again.',
+          {
+            status: 503,
+            headers: {
+              'Content-Type': 'text/plain; charset=utf-8',
+              'Cache-Control': 'no-store'
+            }
+          }
+        );
+      }
+    })());
+
     return;
   }
 
-  event.respondWith(
-    caches.match(request).then(cached => {
-      if (cached) return cached;
+  // Other same-origin GET requests: use cache when available.
+  event.respondWith((async () => {
+    const cachedResponse = await caches.match(request);
 
-      return fetch(request).then(response => {
-        if (response.ok && response.type === 'basic') {
-          const copy = response.clone();
-          event.waitUntil(
-            caches.open(CACHE_NAME)
-              .then(cache => cache.put(request, copy))
-          );
+    if (cachedResponse) return cachedResponse;
+
+    try {
+      const response = await fetch(request);
+
+      if (response.ok && response.type === 'basic') {
+        const cache = await caches.open(CACHE_NAME);
+        await cache.put(request, response.clone());
+      }
+
+      return response;
+    } catch (error) {
+      return new Response(
+        'This resource is unavailable offline.',
+        {
+          status: 503,
+          headers: {
+            'Content-Type': 'text/plain; charset=utf-8',
+            'Cache-Control': 'no-store'
+          }
         }
-        return response;
-      });
-    })
-  );
+      );
+    }
+  })());
 });
